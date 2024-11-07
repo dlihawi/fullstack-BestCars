@@ -34,20 +34,20 @@ try {
 
 // Express route to home
 app.get('/', async (req, res) => {
-    res.send("Welcome to the Mongoose API")
+    res.send("Welcome to the Mongoose API");
 });
 
 // Express route to fetch all reviews
 app.get('/fetchReviews', async (req, res) => {
   try {
-    const documents = await Reviews.find();
+      const documents = await Reviews.find();
 
-    // Check if documents is null or an empty array
-    if (!documents || documents.length === 0) {
-        return res.status(404).json({ message: 'No reviews found' });
-    }
+      // Check if documents is null or an empty array
+      if (!documents || documents.length === 0) {
+          return res.status(404).json({ message: 'No reviews found' });
+      }
 
-    // Send the fetched documents as the response
+      // Send the fetched documents as the response
       res.json(documents);
   } catch (error) {
       console.error('Error fetching reviews:', error); // Log the error for debugging
